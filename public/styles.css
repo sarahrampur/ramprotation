@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  color-scheme: light;
+  --paper: #f4f2ec;
+  --ink: #20231f;
+  --muted: #73776e;
+  --line: #d7d8ce;
+  --green: #c9ef63;
+  --frame: #dedfd6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background-color: var(--paper);
+  background-image: radial-gradient(#c9cabe 0.6px, transparent 0.6px);
+  background-size: 15px 15px;
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+}
+
+.page {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(42px, 8vw, 104px) 0 30px;
+}
+
+.masthead { padding-bottom: 46px; }
+.eyebrow, .page-footer, .section-mark {
+  font: 500 11px/1.4 "DM Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.eyebrow { margin: 0 0 15px; color: var(--muted); }
+h1 { margin: 0; font-size: clamp(42px, 7vw, 78px); line-height: 0.98; font-weight: 600; }
+h1 span { color: #80a824; }
+
+.now-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(240px, 0.8fr); gap: clamp(28px, 6vw, 74px); align-items: start; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--ink); padding: 14px 0 13px; }
+.section-heading h2 { margin: 0; font-size: 15px; font-weight: 700; }
+.section-mark { color: var(--muted); }
+.media-frame { position: relative; overflow: hidden; background: var(--frame); }
+.video-frame { width: 100%; aspect-ratio: 16 / 9; }
+.video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.song-frame { width: 100%; aspect-ratio: 1; max-width: 450px; }
+.song-frame > a, .song-frame img { display: block; width: 100%; height: 100%; }
+.song-frame img { object-fit: cover; }
+.frame-message { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 24px; color: #55594f; font-size: 14px; text-align: center; }
+.caption { display: grid; gap: 5px; padding-top: 14px; font-size: 13px; line-height: 1.5; }
+.caption a { width: fit-content; color: var(--ink); text-decoration-color: #9da196; text-underline-offset: 3px; }
+.caption .primary-link { font-size: 15px; font-weight: 700; }
+.caption .detail { color: var(--muted); }
+.song-frame .play-button { position: absolute; bottom: 14px; left: 14px; border: 0; border-radius: 2px; padding: 11px 14px; background: var(--green); color: var(--ink); font: 700 12px "Manrope", sans-serif; cursor: pointer; }
+.song-frame .play-button:hover { background: #d8ff78; }
+.page-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: clamp(55px, 9vw, 105px); padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); }
+
+@media (max-width: 680px) {
+  .page { width: min(100% - 36px, 520px); padding-top: 44px; }
+  .masthead { padding-bottom: 36px; }
+  .now-grid { grid-template-columns: 1fr; gap: 37px; }
+  .song-frame { max-width: min(100%, 450px); }
+  .page-footer { margin-top: 58px; }
+}

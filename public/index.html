@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f2ec">
+    <title>Now Playing</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="masthead">
+        <p class="eyebrow">A small window into the queue</p>
+        <h1>Now playing<span>.</span></h1>
+      </header>
+      <section class="now-grid" aria-label="Recently added media">
+        <article class="media-section">
+          <div class="section-heading">
+            <h2>On screen</h2>
+            <span class="section-mark" aria-hidden="true">01</span>
+          </div>
+          <div id="video-frame" class="video-frame media-frame" aria-live="polite">
+            <p class="frame-message">Loading video…</p>
+          </div>
+          <div id="video-caption" class="caption"></div>
+        </article>
+        <article class="media-section song-section">
+          <div class="section-heading">
+            <h2>On repeat</h2>
+            <span class="section-mark" aria-hidden="true">02</span>
+          </div>
+          <div id="song-frame" class="song-frame media-frame" aria-live="polite">
+            <p class="frame-message">Loading song…</p>
+          </div>
+          <div id="song-caption" class="caption"></div>
+        </article>
+      </section>
+      <footer class="page-footer"><span>THE CURRENT ROTATION</span><span id="updated-at"></span></footer>
+    </main>
+  </body>
+</html>
