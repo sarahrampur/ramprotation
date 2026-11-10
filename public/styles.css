@@ -38,7 +38,7 @@ body {
 h1 { margin: 0; font-size: clamp(42px, 7vw, 78px); line-height: 0.98; font-weight: 600; }
 h1 span { color: #80a824; }
 
-.now-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(240px, 0.8fr); gap: clamp(28px, 6vw, 74px); align-items: start; }
+.now-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) repeat(2, minmax(0, 0.8fr)); gap: clamp(24px, 4vw, 54px); align-items: start; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--ink); padding: 14px 0 13px; }
 .section-heading h2 { margin: 0; font-size: 15px; font-weight: 700; }
 .section-mark { color: var(--muted); }
@@ -46,6 +46,8 @@ h1 span { color: #80a824; }
 .video-frame { width: 100%; aspect-ratio: 16 / 9; }
 .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 .song-frame { width: 100%; aspect-ratio: 1; max-width: 450px; }
+.read-frame { width: 100%; aspect-ratio: 1; max-width: 450px; }
+.read-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .song-frame > a, .song-frame img { display: block; width: 100%; height: 100%; }
 .song-frame img { object-fit: cover; }
 .frame-message { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 24px; color: #55594f; font-size: 14px; text-align: center; }

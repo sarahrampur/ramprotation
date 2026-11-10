@@ -66,6 +66,28 @@ function renderSong(song) {
   caption.replaceChildren(title, element("span", { className: "detail", text: details }));
 }
 
+function renderCurrentRead(currentRead) {
+  const frame = document.querySelector("#read-frame");
+  const caption = document.querySelector("#read-caption");
+  if (!currentRead?.title) {
+    renderMessage(frame, "No current read selected.");
+    caption.replaceChildren();
+    return;
+  }
+
+  if (currentRead.cover) {
+    const image = document.createElement("img");
+    image.src = currentRead.cover;
+    image.alt = `${currentRead.title} cover`;
+    image.loading = "lazy";
+    image.addEventListener("error", () => renderMessage(frame, "Cover unavailable."), { once: true });
+    frame.replaceChildren(image);
+  } else {
+    renderMessage(frame, "Cover unavailable.");
+  }
+  caption.replaceChildren(element("span", { className: "primary-link", text: currentRead.title }));
+}
+
 function renderFailure(source, frame, caption, status) {
   const messages = {
     video: { empty: "The YouTube playlist is empty.", error: "YouTube isn't responding right now." },
@@ -93,6 +115,7 @@ async function loadNow() {
   else renderFailure("video", videoFrame, videoCaption, data.video?.status);
   if (data.song?.status === "ok") renderSong(data.song.item);
   else renderFailure("song", songFrame, songCaption, data.song?.status);
+  renderCurrentRead(data.currentRead);
 
   document.querySelector("#updated-at").textContent = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",

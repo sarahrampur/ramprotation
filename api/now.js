@@ -1,4 +1,5 @@
 import { getAppleSong } from "../lib/apple.js";
+import { getCurrentRead } from "../lib/current-read.js";
 import { getYouTubeVideo } from "../lib/youtube.js";
 
 async function readSource(name, load) {
@@ -22,5 +23,5 @@ export default async function handler(_request, response) {
     "Cache-Control",
     hasError ? "public, s-maxage=60" : "public, s-maxage=900, stale-while-revalidate=86400",
   );
-  response.status(200).json({ video, song });
+  response.status(200).json({ video, song, currentRead: getCurrentRead() });
 }
