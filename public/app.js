@@ -97,10 +97,16 @@ function renderFailure(source, frame, caption, status) {
   caption.replaceChildren();
 }
 
-async function loadNow() {
+async function loadNow(forceRefresh = false) {
+  const refreshButton = document.querySelector("#refresh-button");
+  if (refreshButton.disabled) return;
+  refreshButton.disabled = true;
+  refreshButton.textContent = "Refreshing";
+
   let data;
   try {
-    const response = await fetch("/api/now");
+    const url = forceRefresh ? `/api/now?refresh=1&_=${Date.now()}` : "/api/now";
+    const response = await fetch(url, { cache: forceRefresh ? "no-store" : "default" });
     if (!response.ok) throw new Error(`Request failed: ${response.status}`);
     data = await response.json();
   } catch {
@@ -121,6 +127,10 @@ async function loadNow() {
     hour: "numeric",
     minute: "2-digit",
   });
+  refreshButton.disabled = false;
+  refreshButton.textContent = "Refresh";
 }
 
-loadNow();
+loadNow(true);
+setInterval(() => loadNow(true), 5 * 60 * 1000);
+document.querySelector("#refresh-button").addEventListener("click", () => loadNow(true));

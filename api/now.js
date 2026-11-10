@@ -12,7 +12,8 @@ async function readSource(name, load) {
   }
 }
 
-export default async function handler(_request, response) {
+export default async function handler(request, response) {
+  const forceRefresh = request.query?.refresh === "1";
   const [video, song] = await Promise.all([
     readSource("YouTube", getYouTubeVideo),
     readSource("Apple Music", getAppleSong),
@@ -21,7 +22,11 @@ export default async function handler(_request, response) {
 
   response.setHeader(
     "Cache-Control",
-    hasError ? "public, s-maxage=60" : "public, s-maxage=900, stale-while-revalidate=86400",
+    forceRefresh
+      ? "no-store"
+      : hasError
+        ? "public, s-maxage=60"
+        : "public, s-maxage=900, stale-while-revalidate=86400",
   );
   response.status(200).json({ video, song, currentRead: getCurrentRead() });
 }

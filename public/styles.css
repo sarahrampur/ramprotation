@@ -58,6 +58,9 @@ h1 span { color: #80a824; }
 .song-frame .play-button { position: absolute; bottom: 14px; left: 14px; border: 0; border-radius: 2px; padding: 11px 14px; background: var(--green); color: var(--ink); font: 700 12px "Manrope", sans-serif; cursor: pointer; }
 .song-frame .play-button:hover { background: #d8ff78; }
 .page-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: clamp(55px, 9vw, 105px); padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); }
+.footer-actions { display: flex; align-items: center; gap: 18px; }
+.footer-actions button { padding: 3px 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--ink); font: inherit; text-transform: uppercase; cursor: pointer; }
+.footer-actions button:disabled { opacity: 0.55; cursor: wait; }
 
 @media (max-width: 680px) {
   .page { width: min(100% - 36px, 520px); padding-top: 44px; }
