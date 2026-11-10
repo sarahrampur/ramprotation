@@ -1,6 +1,6 @@
 import { getAppleSong } from "../lib/apple.js";
 import { getCurrentRead } from "../lib/current-read.js";
-import { getYouTubeVideo } from "../lib/youtube.js";
+import { getYouTubeVideo } from "https://www.youtube.com/playlist?list=PLKcPCbW_zBkU";
 
 async function readSource(name, load) {
   try {
