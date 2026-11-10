@@ -62,7 +62,7 @@ test("maps iTunes metadata and expands artwork size", () => {
     collectionName: "Dirt",
     artworkUrl100: "https://example.test/100x100bb.jpg",
     previewUrl: "https://example.test/preview.m4a",
-  }, "https://music.apple.com/us/song/rooster/123");
+  }, "https://music.apple.com/us/song/rooster/123", "https://music.apple.com/us/playlist/test/456");
   assert.deepEqual(song, {
     title: "Rooster",
     artist: "Alice in Chains",
@@ -70,6 +70,7 @@ test("maps iTunes metadata and expands artwork size", () => {
     artwork: "https://example.test/800x800bb.jpg",
     preview: "https://example.test/preview.m4a",
     url: "https://music.apple.com/us/song/rooster/123",
+    playlistUrl: "https://music.apple.com/us/playlist/test/456",
   });
 });
 
@@ -90,6 +91,7 @@ test("uses the URL slug when the iTunes lookup has no result", async () => {
     artwork: null,
     preview: null,
     url: "https://music.apple.com/us/song/rooster/123",
+    playlistUrl: "https://playlist.example/",
   });
   assert.equal(calls.length, 2);
   for (const call of calls) {

@@ -63,7 +63,10 @@ function renderSong(song) {
 
   const title = element("a", { className: "primary-link", text: song.title, href: song.url });
   const details = [song.artist, song.album].filter(Boolean).join(", ");
-  caption.replaceChildren(title, element("span", { className: "detail", text: details }));
+  const playlist = element("span", { className: "detail" });
+  playlist.append(document.createTextNode("From "));
+  playlist.append(element("a", { text: "playlist", href: song.playlistUrl }));
+  caption.replaceChildren(title, element("span", { className: "detail", text: details }), playlist);
 }
 
 function renderCurrentRead(currentRead) {
