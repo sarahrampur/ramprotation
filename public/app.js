@@ -85,7 +85,10 @@ function renderCurrentRead(currentRead) {
   } else {
     renderMessage(frame, "Cover unavailable.");
   }
-  caption.replaceChildren(element("span", { className: "primary-link", text: currentRead.title }));
+  caption.replaceChildren(
+    element("span", { className: "primary-link", text: currentRead.title }),
+    element("span", { className: "detail", text: currentRead.author }),
+  );
 }
 
 function renderFailure(source, frame, caption, status) {
