@@ -9,11 +9,11 @@ import { parseYouTubeFeed } from "../lib/youtube.js";
 
 const videoId = "abcdefghijk";
 
-test("parses the first YouTube entry and decodes title entities", () => {
+test("parses the last YouTube playlist entry and decodes title entities", () => {
   const xml = `<feed>
+    <entry><yt:videoId>zzzzzzzzzzz</yt:videoId><title>Published more recently</title><published>2026-11-09T12:00:00Z</published></entry>
     <entry><yt:videoId>${videoId}</yt:videoId><title><![CDATA[Rock &amp; Roll]]> &lt;Live&gt; &quot;Now&quot; &apos;!</title>
       <author><name>Channel &#x26; Co &#38; Friends</name></author><published>2026-11-03T23:30:00-05:00</published></entry>
-    <entry><yt:videoId>zzzzzzzzzzz</yt:videoId><title>Later</title></entry>
   </feed>`;
   const item = parseYouTubeFeed(xml, "PL_test");
   assert.equal(item.id, videoId);
